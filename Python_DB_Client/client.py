@@ -1,5 +1,6 @@
 import requests
-from datetime import datetime
+#from datetime import datetime
+import time
 
 base_url = "http://localhost:8081/contacts"
 
@@ -108,6 +109,12 @@ def update_person(phone_number, person):
 
 
 if __name__ == '__main__':
+
+    start_time = time.time()
+    print(len(get_all_persons()))
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Elapsed time: {elapsed_time:.2f} seconds")
    
     ## POST - working
     print("1) ADDING ")
@@ -123,7 +130,6 @@ if __name__ == '__main__':
 
     ## GET - working
     print("\n2.1) SEARCH BY SURNAME ")
-    #print(len(get_all_persons()))
     print(len(search_persons_by_surname('rossi'))) # = 4
     print("\n2.2) SEARCH BY PHONE ")
     print(search_persons_by_phone_number('0099970193'))
